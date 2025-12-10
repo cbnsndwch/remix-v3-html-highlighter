@@ -29,14 +29,11 @@
         "syntax highlighting"
     ],
     "scripts": {
-        "build": "node ./build/build",
-        "getEmbedded": "node ./build/getEmbedded",
         "test": "node ./test/index.mjs"
     },
     "devDependencies": {
         "@vscode/test-electron": "^2.3.0",
-        "glob": "^7.2.3",
-        "mocha": "^10.2.0"
+        "vitest": "^4.0.15"
     },
     "publisher": "cbnsndwch",
     "icon": "assets/icon.png",

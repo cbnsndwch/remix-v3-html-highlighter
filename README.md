@@ -47,20 +47,6 @@ Then install dev dependencies using pnpm:
 pnpm install
 ```
 
-And run the build:
-
-```bash
-pnpm run build
-```
-
-The main grammar is generated using the script in `build/build.js`. To run it:
-
-```bash
-npm run build
-```
-
-The supported languages are defined in `build/languages.js`
-
 To run the tests:
 
 ```bash
