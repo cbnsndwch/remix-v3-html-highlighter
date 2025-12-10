@@ -2,6 +2,10 @@
 .vscode-test/
 test/
 build/
+.changeset/**
+.github/**
+pnpm-lock.yaml
+pnpm-workspace.yaml
 
 **/*.map
 **/*.ts
