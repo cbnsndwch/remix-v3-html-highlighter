@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.4.0
+- Forked from \`bierner.comment-tagged-templates\`.
+- Added support for bare tagged templates (e.g. \`html\`...\`\`) for Remix v3 support.
+
 ## 0.3.3 - February 5, 2024
 - Add highlighting for cypher. Thanks @fabiankaestner!
 - Add highlighting for edgeql. Thanks @MrFoxPro!
