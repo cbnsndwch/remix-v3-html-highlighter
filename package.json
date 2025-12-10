@@ -47,6 +47,11 @@
         "color": "#ffffff",
         "theme": "light"
     },
+    "pnpm": {
+        "onlyBuiltDependencies": [
+            "esbuild"
+        ]
+    },
     "contributes": {
         "grammars": [
             {
