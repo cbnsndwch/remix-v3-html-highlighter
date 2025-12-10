@@ -24,19 +24,22 @@ const reinjectGrammarTemplate = {
     "scopeName": "inline.template-tagged-languages.reinjection"
 };
 
-const getBasicGrammarPattern = (language) => {
+const getBareGrammarPattern = (language) => {
     const sources = Array.isArray(language.source) ? language.source : [language.source];
     return {
-        name: `string.js.taggedTemplate.commentTaggedTemplate.${language.name}`,
+        name: `string.js.taggedTemplate.bareTaggedTemplate.${language.name}`,
         contentName: `meta.embedded.block.${language.name}`,
 
-        // The leading '/' was consumed by outer rule
-        begin: `(?i)(\\*\\s*\\b(?:${language.identifiers.map(escapeRegExp).join('|')})\\b\\s*\\*/)\\s*(\`)`,
+        begin: `(?i)(\\b(?:${language.identifiers.map(escapeRegExp).join('|')})\\b)\\s*(\`)`,
         beginCaptures: {
-            1: { name: 'comment.block.ts' },
+            1: { name: 'entity.name.tagged-template.js' },
             2: { name: 'punctuation.definition.string.template.begin.js' }
         },
-        end: '(?=`)',
+        end: '(`)',
+        endCaptures: {
+            0: { name: 'string.js' },
+            1: { name: 'punctuation.definition.string.template.end.js' }
+        },
         patterns: [
             ...sources.map(source => ({ 'include': source })),
             // When a language grammar is not installed, insert a phony pattern
@@ -52,32 +55,19 @@ const getBasicGrammar = () => {
     const basicGrammar = basicGrammarTemplate;
 
     basicGrammar.repository = languages.reduce((repository, language) => {
-        repository[getRepositoryName(language)] = getBasicGrammarPattern(language);
+        repository[getBareRepositoryName(language)] = getBareGrammarPattern(language);
         return repository;
     }, {});
 
-    const allLanguageIdentifiers = [].concat(...languages.map(x => x.identifiers));
     basicGrammar.patterns = [
-        {
-            // Match entire language comment identifier but only consume '/'
-            begin: `(?i)(/)(?=(\\*\\s*\\b(?:${allLanguageIdentifiers.map(escapeRegExp).join('|')})\\b\\s*\\*/)\\s*\`)`,
-            beginCaptures: {
-                1: { name: 'comment.block.ts' }
-            },
-            end: '(`)',
-            endCaptures: {
-                0: { name: 'string.js' },
-                1: { name: 'punctuation.definition.string.template.end.js' }
-            },
-            patterns: languages.map(language => ({ include: '#' + getRepositoryName(language) }))
-        }
+        ...languages.map(language => ({ include: '#' + getBareRepositoryName(language) }))
     ]
 
     return basicGrammar;
 };
 
-function getRepositoryName(langauge) {
-    return 'commentTaggedTemplate-' + langauge.name;
+function getBareRepositoryName(language) {
+    return 'bareTaggedTemplate-' + language.name;
 }
 
 function getBasicGrammarInjectionSelector() {
