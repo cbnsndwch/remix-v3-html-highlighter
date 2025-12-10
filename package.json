@@ -29,10 +29,15 @@
         "syntax highlighting"
     ],
     "scripts": {
-        "test": "node ./test/index.mjs"
+        "test": "node ./test/index.mjs",
+        "package": "vsce package",
+        "release": "vsce publish"
     },
     "devDependencies": {
+        "@changesets/changelog-github": "^0.5.2",
+        "@changesets/cli": "^2.29.8",
         "@vscode/test-electron": "^2.3.0",
+        "@vscode/vsce": "^3.7.1",
         "vitest": "^4.0.15"
     },
     "publisher": "cbnsndwch",
