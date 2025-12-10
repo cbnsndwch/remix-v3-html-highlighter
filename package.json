@@ -1,19 +1,19 @@
 {
-    "name": "comment-tagged-templates",
-    "displayName": "Comment tagged templates",
-    "description": "Syntax highlighting for tagged template strings using comments to specify language",
-    "version": "0.3.3",
-    "publisher": "bierner",
-    "galleryBanner": {
-        "color": "#ffffff",
-        "theme": "light"
+    "name": "remix-v3-html-highlighter",
+    "description": "Syntax highlighting for Remix v3 HTML tags",
+    "version": "0.4.1",
+    "type": "module",
+    "author": {
+        "name": "cbnsndwch LLC",
+        "url": "https://www.cbnsndwch.io"
     },
     "repository": {
-        "url": "https://github.com/mjbvz/vscode-comment-tagged-templates.git"
+        "url": "https://github.com/cbnsndwch/remix-v3-html-highlighter.git"
     },
     "bugs": {
-        "url": "https://github.com/mjbvz/vscode-comment-tagged-templates/issues"
+        "url": "https://github.com/cbnsndwch/remix-v3-html-highlighter/issues"
     },
+    "homepage": "https://github.com/cbnsndwch/remix-v3-html-highlighter",
     "engines": {
         "vscode": "^1.20.0"
     },
@@ -21,12 +21,29 @@
         "Programming Languages"
     ],
     "keywords": [
+        "remix v3",
+        "remix_run",
         "javascript",
         "typescript",
-        "tagged",
-        "template",
-        "embedded"
+        "tagged template",
+        "syntax highlighting"
     ],
+    "scripts": {
+        "build": "node ./build/build",
+        "getEmbedded": "node ./build/getEmbedded",
+        "test": "node ./test/index.mjs"
+    },
+    "devDependencies": {
+        "@vscode/test-electron": "^2.3.0",
+        "mocha": "^10.2.0"
+    },
+    "publisher": "cbnsndwch",
+    "icon": "assets/icon.png",
+    "displayName": "Remix v3 HTML Syntax Highlighter",
+    "galleryBanner": {
+        "color": "#ffffff",
+        "theme": "light"
+    },
     "contributes": {
         "grammars": [
             {
@@ -43,56 +60,7 @@
                 "scopeName": "inline.template-tagged-languages",
                 "path": "./syntaxes/grammar.json",
                 "embeddedLanguages": {
-                    "meta.embedded.block.css": "css",
-                    "meta.embedded.block.basic": "html",
-                    "meta.embedded.block.ini": "ini",
-                    "meta.embedded.block.java": "java",
-                    "meta.embedded.block.lua": "lua",
-                    "meta.embedded.block.makefile": "makefile",
-                    "meta.embedded.block.perl": "perl",
-                    "meta.embedded.block.r": "r",
-                    "meta.embedded.block.ruby": "ruby",
-                    "meta.embedded.block.php": "php",
-                    "meta.embedded.block.sql": "sql",
-                    "meta.embedded.block.vs_net": "vs_net",
-                    "meta.embedded.block.xml": "xml",
-                    "meta.embedded.block.xsl": "xsl",
-                    "meta.embedded.block.yaml": "yaml",
-                    "meta.embedded.block.dosbatch": "dosbatch",
-                    "meta.embedded.block.clojure": "clojure",
-                    "meta.embedded.block.coffee": "coffee",
-                    "meta.embedded.block.c": "c",
-                    "meta.embedded.block.cpp": "cpp",
-                    "meta.embedded.block.diff": "diff",
-                    "meta.embedded.block.dockerfile": "dockerfile",
-                    "meta.embedded.block.go": "go",
-                    "meta.embedded.block.graphql": "graphql",
-                    "meta.embedded.block.groovy": "groovy",
-                    "meta.embedded.block.pug": "pug",
-                    "meta.embedded.block.js": "javascript",
-                    "meta.embedded.block.json": "json",
-                    "meta.embedded.block.less": "less",
-                    "meta.embedded.block.md": "markdown",
-                    "meta.embedded.block.mjml": "mjml",
-                    "meta.embedded.block.objc": "objc",
-                    "meta.embedded.block.scss": "scss",
-                    "meta.embedded.block.perl6": "perl6",
-                    "meta.embedded.block.powershell": "powershell",
-                    "meta.embedded.block.python": "python",
-                    "meta.embedded.block.rust": "rust",
-                    "meta.embedded.block.scala": "scala",
-                    "meta.embedded.block.shell": "shellscript",
-                    "meta.embedded.block.ts": "typescript",
-                    "meta.embedded.block.tsx": "typescriptreact",
-                    "meta.embedded.block.csharp": "csharp",
-                    "meta.embedded.block.fsharp": "fsharp",
-                    "meta.embedded.block.dart": "dart",
-                    "meta.embedded.block.glsl": "glsl",
-                    "meta.embedded.block.liquid": "liquid",
-                    "meta.embedded.block.sparql": "sparql",
-                    "meta.embedded.block.applescript": "applescript",
-                    "meta.embedded.block.edgeql": "edgeql",
-                    "meta.embedded.block.cypher": "cypher"
+                    "meta.embedded.block.basic": "html"
                 }
             },
             {
@@ -113,14 +81,5 @@
                 }
             }
         ]
-    },
-    "devDependencies": {
-        "@vscode/test-electron": "^2.3.0",
-        "mocha": "^10.2.0"
-    },
-    "scripts": {
-        "build": "node ./build/build",
-        "getEmbedded": "node ./build/getEmbedded",
-        "test": "node ./test/index.mjs"
     }
 }
