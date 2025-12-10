@@ -1,13 +1,14 @@
 //@ts-check
 import { runTests } from '@vscode/test-electron';
 import * as path from 'path';
+import { fileURLToPath } from 'url';
 
-const __dirname = new URL('.', import.meta.url).pathname;
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 async function go() {
     try {
         const extensionDevelopmentPath = path.resolve(__dirname, '..');
-        const extensionTestsPath = path.resolve(__dirname, 'suite');
+        const extensionTestsPath = path.resolve(__dirname, 'suite/index.cjs');
 
         /**
          * Basic usage

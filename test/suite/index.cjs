@@ -8,13 +8,15 @@ module.exports.run = (testsRoot, cb) => {
 		ui: 'tdd'
 	});
 
-	glob('**/**.test.js', { cwd: testsRoot }, (err, files) => {
+    const testsDir = path.dirname(testsRoot);
+
+	glob('**/**.test.cjs', { cwd: testsDir }, (err, files) => {
 		if (err) {
 			return cb(err);
 		}
 
 		// Add files to the test suite
-		files.forEach(f => mocha.addFile(path.resolve(testsRoot, f)));
+		files.forEach(f => mocha.addFile(path.resolve(testsDir, f)));
 
 		try {
 			// Run the mocha test
