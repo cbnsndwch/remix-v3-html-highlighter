@@ -5,10 +5,10 @@ import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-async function go() {
+async function main() {
     try {
         const extensionDevelopmentPath = path.resolve(__dirname, '..');
-        const extensionTestsPath = path.resolve(__dirname, 'suite/index.cjs');
+        const extensionTestsPath = path.resolve(__dirname, 'suite/index.js');
 
         /**
          * Basic usage
@@ -23,4 +23,4 @@ async function go() {
 	}
 }
 
-go();
+main();
