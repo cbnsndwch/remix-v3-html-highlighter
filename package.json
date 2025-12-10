@@ -1,7 +1,7 @@
 {
     "name": "remix-v3-html-highlighter",
     "description": "Syntax highlighting for Remix v3 HTML tags",
-    "version": "0.4.1",
+    "version": "0.5.0",
     "type": "module",
     "author": {
         "name": "cbnsndwch LLC",
